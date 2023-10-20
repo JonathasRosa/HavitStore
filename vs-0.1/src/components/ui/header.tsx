@@ -89,7 +89,7 @@ function Header() {
                 </SheetContent>
             </Sheet>
             <h1 className="text-lg font-semibold">
-                <span className="text-primary">Havit</span>Store
+                <span className="text-primary">HaviTech</span>Store
             </h1>
             <Button size="icon" variant="outline">
                 <ShoppingCartIcon />

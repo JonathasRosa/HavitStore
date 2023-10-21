@@ -1,6 +1,13 @@
 import { Category } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
-import { KeyboardIcon, MonitorIcon, HeadphonesIcon, SquareIcon, SpeakerIcon, MouseIcon} from "lucide-react";
+import { 
+    KeyboardIcon, 
+    MonitorIcon, 
+    HeadphonesIcon, 
+    SquareIcon, 
+    SpeakerIcon, 
+    MouseIcon} 
+from "lucide-react";
 
 
 interface CategoryItemProps {

@@ -9,7 +9,7 @@ const Categories = async () => {
                 <CategoryItem key={category.id} category={category} />
             ))}
         </div>
-    )
-}
+    );
+};
 
 export default Categories;

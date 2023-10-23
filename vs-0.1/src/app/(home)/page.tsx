@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Categories from "./components/categories";
 import ProductList from "./components/product-list";
 import { prismaClient } from "@/lib/prisma";
+import SectionTitle from "./components/section-title";
+import PromoBanner from "./components/promo-banner";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
@@ -29,13 +30,8 @@ export default async function Home() {
 
   return (
     <div> 
-      <Image 
+      <PromoBanner 
         src="/banner-home-01.png"
-        height={0}
-        width={0}
-        className="h-auto w-full px-5"
-        sizes="100vw"
-        priority={true}
         alt={"Até 55% de desconto só esse mês!"} />
 
       <div className="mt-8 px-5">
@@ -43,37 +39,27 @@ export default async function Home() {
       </div>
 
       <div className="mt-8">
-        <p className="mb-3 pl-5 font-bold uppercase">Ofertas</p>
+        <SectionTitle>Ofertas</SectionTitle>
         <ProductList products={deals}/>
       </div>
 
-      <Image 
+      <PromoBanner 
         src="/banner-home-02.png"
-        height={0}
-        width={0}
-        className="h-auto w-full px-5 py-5"
-        sizes="100vw"
-        priority={true}
         alt={"Até 55% de desconto em mouses!"} 
       />
       
       <div className="mt-8">
-          <p className="mb-3 pl-5 font-bold uppercase">Teclados</p>
-          <ProductList products={keyboards}/>
+        <SectionTitle>Teclados</SectionTitle>
+        <ProductList products={keyboards}/>
       </div>
 
-      <Image 
+      <PromoBanner 
         src="/banner-home-03.png"
-        height={0}
-        width={0}
-        className="h-auto w-full px-5 py-5"
-        sizes="100vw"
-        priority={true}
         alt={"Até 20% de desconto em headphones!"} 
       />
 
       <div className="mt-8 ">
-          <p className="mb-3 pl-5 font-bold uppercase">Headphones</p>
+          <SectionTitle>HeadPhones</SectionTitle>
           <ProductList products={headphones}/>
       </div>
     </div>

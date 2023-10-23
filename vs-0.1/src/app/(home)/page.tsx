@@ -11,6 +11,22 @@ export default async function Home() {
       }, 
     },
   });
+  const keyboards = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "keyboards",
+      },
+    },
+  })
+
+  const headphones = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "headphones",
+      },
+    },
+  })
+
   return (
     <div> 
       <Image 
@@ -22,24 +38,44 @@ export default async function Home() {
         priority={true}
         alt={"Até 55% de desconto só esse mês!"} />
 
-        <div className="mt-8 px-5">
+      <div className="mt-8 px-5">
         <Categories />
-        </div>
+      </div>
 
-        <div className="mt-8">
-          <p className="mb-3 pl-5 font-bold uppercase">Ofertas</p>
-          <ProductList products={deals}/>
-        </div>
+      <div className="mt-8">
+        <p className="mb-3 pl-5 font-bold uppercase">Ofertas</p>
+        <ProductList products={deals}/>
+      </div>
 
-        <Image 
+      <Image 
         src="/banner-home-02.png"
         height={0}
         width={0}
-        className="h-auto w-full px-5"
+        className="h-auto w-full px-5 py-5"
         sizes="100vw"
         priority={true}
-        alt={"Até 55% de desconto em mouses!"} />
-        
+        alt={"Até 55% de desconto em mouses!"} 
+      />
+      
+      <div className="mt-8">
+          <p className="mb-3 pl-5 font-bold uppercase">Teclados</p>
+          <ProductList products={keyboards}/>
+      </div>
+
+      <Image 
+        src="/banner-home-03.png"
+        height={0}
+        width={0}
+        className="h-auto w-full px-5 py-5"
+        sizes="100vw"
+        priority={true}
+        alt={"Até 20% de desconto em headphones!"} 
+      />
+
+      <div className="mt-8 ">
+          <p className="mb-3 pl-5 font-bold uppercase">Headphones</p>
+          <ProductList products={headphones}/>
+      </div>
     </div>
-  )
+  );
 }

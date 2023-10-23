@@ -3,17 +3,19 @@ import { computerProductTotalPrice } from "@/helpers/product";
 import { Product } from "@prisma/client";
 
 interface ProductListProps {
-    product: Product[];
+    products: Product[];
 }
 
-const ProductList = ({product}: ProductListProps) => {
+const ProductList = ({ products }: ProductListProps) => {
     return (
-    <div className="flex w-full gap-4 overflow-x-auto px-5 [&:: -webkit-scrollbar]:hidden">
-        {product.map((product) => (
-            <ProductItem  key={product.id} product={computerProductTotalPrice(product)} />
+    <div className="flex w-full gap-4 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
+        {products.map((product) => (
+            <ProductItem  
+                key={product.id} 
+                product={computerProductTotalPrice(product)} />
         ))}
         </div>
     );
-}
+};
 
 export default ProductList;

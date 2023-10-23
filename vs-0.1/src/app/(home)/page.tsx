@@ -20,14 +20,14 @@ export default async function Home() {
         className="h-auto w-full px-5"
         sizes="100vw"
         priority={true}
-        alt={"Até 55% de desconto esse mês!"} />
+        alt={"Até 55% de desconto só esse mês!"} />
 
         <div className="mt-8 px-5">
         <Categories />
         </div>
 
         <div className="mt-8">
-          <ProductList product={deals}/>
+          <ProductList products={deals}/>
         </div>
     </div>
   )

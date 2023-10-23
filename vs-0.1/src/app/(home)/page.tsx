@@ -12,10 +12,10 @@ export default async function Home() {
       }, 
     },
   });
-  const keyboards = await prismaClient.product.findMany({
+  const mouses = await prismaClient.product.findMany({
     where: {
       category: {
-        slug: "keyboards",
+        slug: "mouses",
       },
     },
   })
@@ -49,8 +49,8 @@ export default async function Home() {
       />
       
       <div className="mt-8">
-        <SectionTitle>Teclados</SectionTitle>
-        <ProductList products={keyboards}/>
+        <SectionTitle>Mouses</SectionTitle>
+        <ProductList products={mouses}/>
       </div>
 
       <PromoBanner 

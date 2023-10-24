@@ -13,6 +13,7 @@ import { Button } from "./button";
 import { Card } from "./card";
 import { 
     Sheet, 
+    SheetClose, 
     SheetContent, 
     SheetHeader, 
     SheetTrigger 
@@ -20,6 +21,7 @@ import {
 import { signIn, useSession, signOut } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar"
 import { Separator } from "./separator"
+import Link from "next/link";
 
 
 function Header() {
@@ -81,10 +83,14 @@ function Header() {
                             <PercentIcon size={16} />
                             Ofertas
                         </Button>
-                        <Button variant="outline" className="w-full justify-start gap-2">
-                            <ListOrderedIcon size={16} />
-                            Catálogo
-                        </Button>
+                        <SheetClose asChild>
+                        <Link href="/catalog">
+                            <Button variant="outline" className="w-full justify-start gap-2">
+                                <ListOrderedIcon size={16} />
+                                Catálogo
+                            </Button>
+                        </Link>
+                        </SheetClose>
                     </div>
                 </SheetContent>
             </Sheet>

@@ -5,7 +5,7 @@ import { computerProductTotalPrice } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
 
 const CategoryProducts = async ({ params }: any) => {
-    const category = await prismaClient.product.findFirst({
+    const category = await prismaClient.category.findFirst({
         where: {
             slug: params.slug,
         }, 
@@ -13,6 +13,7 @@ const CategoryProducts = async ({ params }: any) => {
             products: true,
         }
     });
+
     if(!category) {
         return null;
     }
@@ -25,15 +26,14 @@ const CategoryProducts = async ({ params }: any) => {
             {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
             {category.name}
             </Badge>
-        
-        <div className="grid grid-cols-2 gap-8">
-            {category.products.map((product) => (
-                <ProductItem 
-                key={product.id} 
-                product={computerProductTotalPrice(product)} 
-                />
-            ))}
-        </div>
+            <div className="grid grid-cols-2 gap-8">
+                {category.products.map((product) => (
+                    <ProductItem 
+                    key={product.id} 
+                    product={computerProductTotalPrice(product)} 
+                    />
+                ))}
+            </div>
         </div>
     );
 };

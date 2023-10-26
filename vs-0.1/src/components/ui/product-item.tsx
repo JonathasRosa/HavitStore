@@ -2,6 +2,7 @@ import { ProductWithTotalPrice } from "@/helpers/product";
 import { ArrowDownIcon } from "lucide-react";
 import { Badge } from "./badge";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductItemProps {
     product: ProductWithTotalPrice;
@@ -9,7 +10,8 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
     return (
-        <div className="flex flex-col gap-4">
+        <Link href={`/product/${product.slug}`}>
+            <div className="flex flex-col gap-4">
             <div className="relative flex h-[170px] w-full
             items-center justify-center rounded-lg bg-accent">
                 <Image
@@ -36,22 +38,23 @@ const ProductItem = ({ product }: ProductItemProps) => {
                 <div className="flex items-center gap-2">
                     { product.discountPercentage > 0 ? (
                         <>
-                            <p className="font-semibold">
+                            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold">
                                 R$ {product.totalPrice.toFixed(2)}
                             </p>
-                            <p className="opacity-75 line-through text-xs">
+                            <p className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold opacity-75 line-through text-xs">
                                 R$ {Number(product.basePrice).toFixed(2)}
                             </p>
                         </>
                     ) : (
-                        <p className="font-semibold text-sm">
+                        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold">
                             R$ {product.basePrice.toFixed(2)}
                         </p>
                     )}
                 </div>
             </div>
         </div>
-    )
-}
+        </Link>
+    );
+};
 
 export default ProductItem;

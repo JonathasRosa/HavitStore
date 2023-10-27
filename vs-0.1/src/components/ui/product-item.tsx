@@ -1,6 +1,5 @@
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { ArrowDownIcon } from "lucide-react";
-import { Badge } from "./badge";
+import DiscountBadge from "./discount-badge";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,9 +24,9 @@ const ProductItem = ({ product }: ProductItemProps) => {
                     alt={product.name}
                 />
                 {product.discountPercentage > 0 && (
-                <Badge className="absolute left-3 top-3 px-2 py-[2px]">
-                    <ArrowDownIcon size={14}/>{product.discountPercentage}%
-                </Badge>
+                <DiscountBadge className="absolute left-3 top-3">
+                    {product.discountPercentage}
+                </DiscountBadge>
                 )}
             </div>
             <div className="flex flex-col gap-1">

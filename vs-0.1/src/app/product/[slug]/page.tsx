@@ -1,6 +1,7 @@
 import { prismaClient } from "@/lib/prisma";
 import ProductImages from "./components/products-images";
 import ProductInfo from "./components/product-info";
+import { computeProductTotalPrice } from "@/helpers/product";
 
 interface ProductDetailsPageProps {
     params: {
@@ -23,6 +24,7 @@ const ProductDetailsPage = async ({
         <div className="flex flex-col gap-8">
             <ProductImages imageUrls={product.imageUrls} name={product.name} />
             <ProductInfo product={computeProductTotalPrice(product)} />
+            
         </div>
     );
 };

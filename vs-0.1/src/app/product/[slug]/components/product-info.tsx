@@ -41,7 +41,9 @@ const ProductInfo = ({
                 )}
             </div>
             {discountPercentage >0 && (
-                <p className="text-sm line-through opacity-75">R$ {Number(basePrice).toFixed(2)}</p>
+                <p className="text-sm line-through opacity-75">
+                    R$ {Number(basePrice).toFixed(2)}
+                </p>
             )}
             <div className="flex items-center gap-2 mt-4">
                 <Button size="icon" variant="outline" onClick={handleDecreaseQuantityClick}>
@@ -51,23 +53,29 @@ const ProductInfo = ({
                 <Button size="icon" variant="outline" onClick={handleIncreaseQuantityClick}>
                     <ArrowRightIcon size={16} />
                 </Button>
-                <div className="flex flex-col gap-3 mt-8">
-                    <h3 className="font-bold">Descrição</h3>
-                    <p className="text-justify text-sm opacity-60">{description}</p>
-                </div>
-                <Button className="mt-8 font-bold uppercase">
-                    Adicionar ao carrinho
-                </Button>
-                <div className="bg-accent flex items-center px-5 py-2 mt-5 justify-between">
-                    <div className="flex items-center gap-2">
-                        <TruckIcon />
-                        <div className="flex flex-col">
-                            <p className="text-xs">Entrega via <span className="font-bold">HTSPacket</span></p>
-                            <p className="text-xs text-[#8162FF]">Envio para <span className="font-bold">todo o Brasil</span></p>
-                        </div>
+            </div>
+            <div className="flex flex-col gap-3 mt-8">
+                <h3 className="font-bold">Descrição</h3>
+                <p className="text-justify text-sm opacity-60">{description}</p>
+            </div>
+
+            <Button className="mt-8 font-bold uppercase">
+                Adicionar ao carrinho
+            </Button>
+
+            <div className="bg-accent flex items-center px-5 py-2 mt-5 rounded-lg justify-between">
+                <div className="flex items-center gap-2">
+                    <TruckIcon />
+                    <div className="flex flex-col">
+                        <p className="text-xs">
+                            Entrega via <span className="font-bold">HTSPacket</span>
+                        </p>
+                        <p className="text-xs text-[#8162FF]">
+                            Envio para <span className="font-bold">todo o Brasil</span>
+                        </p>
                     </div>
-                    <p className="text-xs font-bold">Frete grátis</p>
                 </div>
+                <p className="text-xs font-bold">Frete grátis</p>
             </div>
         </div>
     );

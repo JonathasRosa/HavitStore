@@ -1,11 +1,12 @@
 import { prismaClient } from "@/lib/prisma";
-import ProductImages from "./components/product-images";
+import ProductImages from "./components/products-images";
+import ProductInfo from "./components/product-info";
 
 interface ProductDetailsPageProps {
     params: {
         slug: string
     };
-};
+}
 
 const ProductDetailsPage = async ({
     params: {slug},
@@ -19,8 +20,9 @@ const ProductDetailsPage = async ({
     if (!product) return null;
 
     return (
-        <div>
-            <ProductImages name={product.name} imageUrls={product.imageUrls} />
+        <div className="flex flex-col gap-8">
+            <ProductImages imageUrls={product.imageUrls} name={product.name} />
+            <ProductInfo product={computeProductTotalPrice(product)} />
         </div>
     );
 };

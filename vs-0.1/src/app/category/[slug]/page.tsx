@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import ProductItem from "@/components/ui/product-item";
 import { CATEGORY_ICON } from "@/constants/category-icon";
-import { computerProductTotalPrice } from "@/helpers/product";
+import { computeProductTotalPrice } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
 
 const CategoryProducts = async ({ params }: any) => {
@@ -30,7 +30,7 @@ const CategoryProducts = async ({ params }: any) => {
                 {category.products.map((product) => (
                     <ProductItem 
                     key={product.id} 
-                    product={computerProductTotalPrice(product)} 
+                    product={computeProductTotalPrice(product)} 
                     />
                 ))}
             </div>

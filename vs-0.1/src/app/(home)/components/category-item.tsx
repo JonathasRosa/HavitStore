@@ -18,7 +18,7 @@ const CategoryItem = ({category}: CategoryItemProps ) => {
             <span className="text-xs font-bold">{category.name}</span>
             </Badge>
         </Link>
-    )
-}
+    );
+};
 
 export default CategoryItem;

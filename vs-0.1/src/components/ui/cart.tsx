@@ -4,20 +4,24 @@ import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computeProductTotalPrice } from "@/helpers/product";
-import { Separator } from "@radix-ui/react-separator";
+import { ScrollArea } from "./scroll-area";
+import { Separator } from "./separator";
+import { Button } from "./button";
 
 
 const Cart = () => {
     const { products, subtotal, total, totalDiscount} = useContext(CartContext)
     return (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 h-full">
             <Badge className=" w-fit gap-1 border-primary border-2 text-base uppercase px-3 py-[0.375rem]" 
                     variant="outline">
                 <ShoppingCartIcon size={16} />
             Carrinho
             </Badge>
-            <div className="flex flex-col gap-4">
-                {products.length > 0 ?(
+            <div className="flex flex-col gap-4 h-full max-h-full overflow-hidden">
+                <ScrollArea className="h-full">
+                <div className="flex flex-col gap-8 h-full">
+                {products.length > 0 ? (
                     products.map((product) => (
                         <CartItem
                             key={product.id}
@@ -29,6 +33,8 @@ const Cart = () => {
                         Carrinho Vazio. Vamos fazer compras?
                     </p>
                 )}
+                </div>
+                </ScrollArea>
             </div>
             <div className="flex flex-col gap-3">
                 <Separator />
@@ -48,6 +54,7 @@ const Cart = () => {
                     <p>Total</p>
                     <p>R$ {total.toFixed(2)}</p>
                 </div>
+                <Button className="uppercase font-bold mt-7">Finalizar compra</Button>
             </div>
         </div>
     );
